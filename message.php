@@ -15,7 +15,9 @@ if (!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-
+			$fp = fopen('test.txt', 'w');
+			fwrite($fp, $replyToken);
+			fclose($fp);
 
 			// Build message to reply back
 			$messages = [
@@ -42,7 +44,7 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 
 			echo $result . "\r\n";
-			echo $replyToken . "\r\n";
+
 		}
 	}
 }
