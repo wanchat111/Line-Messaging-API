@@ -15,8 +15,10 @@ if (!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
+			$groupId = $eventp['source']['groupId'];
 			$fp = fopen('test.txt', 'w');
 			fwrite($fp, $replyToken);
+			fwrite($fp, $groupId);
 			fclose($fp);
 
 			// Build message to reply back
