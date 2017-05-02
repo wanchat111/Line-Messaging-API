@@ -1,28 +1,24 @@
 <?php
-$access_token = 'ZVe7KOu6MC7/Vo1o8uDOWCkFcmN62GJX8UEU7aookHrzatE916rXlavzX5JxSpVnNSaLi3kDg1jlAIT7+1dQU9G0ZNj3UPJwRNFkE65A9dl1nxMJHbL9fIJi19cisycC2+1ogbOVrMHzM2Z7EsIXfQdB04t89/1O/w1cDnyilFU=';
+$access_token = 'ZVe7KOu6MC7/Vo1o8uDOWCkFcmN62GJX8UEU7aookHrzatE916rXlavzX5JxSpVnNSaLi3kDg1jlAIT7+1dQU9G0ZNj3UPJwRNFkE65A9dl1nxMJHbL9fIJi19cisycC2+1ogbOVrMHzM2Z7EsIXfQdB04t89/1O/w1cDnyilFU=
+';
 
 // Get POST body content
-$content = file_get_contents('php://input')
+$content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
-		    //$groupId = $event['source']['groupId'];
-			// $fp2 = fopen('testjoin.txt', 'w');
-			// fwrite($fp2, "555");
-			// fclose($fp2);
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-			// $groupId = $event['source'];
-			// $fp = fopen('test.txt', 'w');
-			// fwrite($fp, $groupId);
-			// fclose($fp);
+			$fp = fopen('test2.txt','w');
+			fwrite($fp, $replyToken);
+			fclose($fp);
 
 			// Build message to reply back
 			$messages = [
