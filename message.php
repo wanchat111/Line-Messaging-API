@@ -3,7 +3,9 @@ $access_token = 'ZVe7KOu6MC7/Vo1o8uDOWCkFcmN62GJX8UEU7aookHrzatE916rXlavzX5JxSpV
 
 // Get POST body content
 $content = file_get_contents('php://input')
-print_r($content);
+$fpjoin = fopen('testjoin.txt', 'wa+');
+fwrite($fpjoin, print_r($content));
+fclose($joinfp);
 // Parse JSON
 $events = json_decode($content, true);
 // Validate parsed JSON data
@@ -17,7 +19,7 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			$groupId = $event['source']['groupId'];
-			$fp = fopen('test.txt', 'w');
+			$fp = fopen('test.txt', 'wa+');
 			fwrite($fp, $replyToken);
 			fwrite($fp, $groupId);
 			fclose($fp);
