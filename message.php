@@ -15,7 +15,7 @@ if (!is_null($events['events'])) {
 			fwrite($fp2, $event);
 			fclose($fp2);
 		// Reply only when message sent is in 'text' format
-		if ($event['type'] == 'join' ) { //&& $event['message']['type'] == 'text') {
+		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			//$text = $event['message']['text'];
 			// Get replyToken
