@@ -48,12 +48,13 @@ if (!is_null($events['events'])) {
 	// 	}
 	// }
 	foreach ($events['events'] as $event) {
-		$fp = fopen('test2.txt','w');
-		fwrite($fp, $event['type']);
-		fclose($fp);
-		// if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
-		// }
+		if ($event['type'] == 'join') {
+			$fp = fopen('test2.txt','w');
+			fwrite($fp, print_r($event));
+			fclose($fp);
+
+		}
 	}
 }
 echo "OK";
