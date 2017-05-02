@@ -3,9 +3,6 @@ $access_token = 'ZVe7KOu6MC7/Vo1o8uDOWCkFcmN62GJX8UEU7aookHrzatE916rXlavzX5JxSpV
 
 // Get POST body content
 $content = file_get_contents('php://input')
-$fpjoin = fopen('testjoin.txt', 'wa+');
-fwrite($fpjoin, print_r($content));
-fclose($fpjoin);
 // Parse JSON
 $events = json_decode($content, true);
 // Validate parsed JSON data
@@ -19,36 +16,36 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			$groupId = $event['source']['groupId'];
-			$fp = fopen('test.txt', 'wa+');
+			$fp = fopen('test.txt', 'w');
 			//fwrite($fp, $replyToken);
 			fwrite($fp, $groupId);
 			fclose($fp);
 
 			// Build message to reply back
-			$messages = [
-				'type' => 'text',
-				'text' => $text
-			];
+			// $messages = [
+			// 	'type' => 'text',
+			// 	'text' => $text
+			// ];
 
 			// Make a POST Request to Messaging API to reply to sender
-			$url = 'https://api.line.me/v2/bot/message/reply';
-			$data = [
-				'replyToken' => $replyToken,
-				'messages' => [$messages],
-			];
-			$post = json_encode($data);
-			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+			// $url = 'https://api.line.me/v2/bot/message/reply';
+			// $data = [
+			// 	'replyToken' => $replyToken,
+			// 	'messages' => [$messages],
+			// ];
+			// $post = json_encode($data);
+			// $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
-			$ch = curl_init($url);
-			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-			$result = curl_exec($ch);
-			curl_close($ch);
+			// $ch = curl_init($url);
+			// curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			// curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+			// curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			// curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+			// $result = curl_exec($ch);
+			// curl_close($ch);
 
-			echo $result . "\r\n";
+			// echo $result . "\r\n";
 
 		}
 	}
