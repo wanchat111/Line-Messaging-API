@@ -12,7 +12,7 @@ if (!is_null($events['events'])) {
 		    //$groupId = $event['source']['groupId'];
 			$fp2 = fopen('testjoin.txt', 'w');
 			//fwrite($fp, $replyToken);
-			fwrite($fp2, $event);
+			fwrite($fp2, "555");
 			fclose($fp2);
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
