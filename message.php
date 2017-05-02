@@ -9,6 +9,11 @@ $events = json_decode($content, true);
 if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
+		    //$groupId = $event['source']['groupId'];
+			$fp2 = fopen('testjoin.txt', 'w');
+			//fwrite($fp, $replyToken);
+			fwrite($fp2, $event);
+			fclose($fp2);
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'join' ) { //&& $event['message']['type'] == 'text') {
 			// Get text sent
