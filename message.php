@@ -19,7 +19,7 @@ if (!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-			$groupId = $event['source']['groupId'];
+			$groupId = $event['source'];
 			$fp = fopen('test.txt', 'w');
 			//fwrite($fp, $replyToken);
 			fwrite($fp, $groupId);
