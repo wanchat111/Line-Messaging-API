@@ -51,7 +51,7 @@ if (!is_null($events['events'])) {
 
 		if ($event['type'] == 'join') {
 			$fp = fopen('test2.txt','w');
-			fwrite($fp, print_r($event));
+			fwrite($fp, $event['source']['groupId']);
 			fclose($fp);
 
 		}
