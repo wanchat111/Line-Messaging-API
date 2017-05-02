@@ -5,7 +5,7 @@ $access_token = 'ZVe7KOu6MC7/Vo1o8uDOWCkFcmN62GJX8UEU7aookHrzatE916rXlavzX5JxSpV
 $content = file_get_contents('php://input')
 $fpjoin = fopen('testjoin.txt', 'wa+');
 fwrite($fpjoin, print_r($content));
-fclose($joinfp);
+fclose($fpjoin);
 // Parse JSON
 $events = json_decode($content, true);
 // Validate parsed JSON data
@@ -13,14 +13,14 @@ if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
-		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
+		if ($event['type'] == 'join' ) { //&& $event['message']['type'] == 'text') {
 			// Get text sent
-			$text = $event['message']['text'];
+			//$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			$groupId = $event['source']['groupId'];
 			$fp = fopen('test.txt', 'wa+');
-			fwrite($fp, $replyToken);
+			//fwrite($fp, $replyToken);
 			fwrite($fp, $groupId);
 			fclose($fp);
 
